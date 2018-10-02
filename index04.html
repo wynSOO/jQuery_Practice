@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		
+
+		// HTML 페이지가 모두 실행 된 다음에 스크립트를 작동 시키고자 할때
+		// window.onload, body onload 기능이 다소 불안정하여
+		// 실제 원하는 기능이 잘 작동이 안되는 경우가 있어서
+		// 새롭게 추가된 JS event 핸들링 방식
+		document.addEventListener("DOMContentLoaded",myfunc)
+
+		function myfunc(){
+			alert('도큐먼트 로딩완료')
+		}
+
+		// // 2번 실행
+		// window.ready = function(){
+		// 	alert('window ready')
+		// }
+
+
+		// 1번 실행
+		window.onload = function(){
+			alert('window onload')
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+		.my-p1{
+			background-color: yellow;
+			color: blue;
+			font-weight: bold;
+		}
+	</style>
+	<script>
+		$(function(){
+
+			// 마우스가 over 되면 my-p1 style을 적용하고
+			// my-p1 클래스 추가
+			$("#p1").on('mouseover',function(){
+				$(this).addClass('my-p1')
+			})
+
+			// 마우스가 out 되면 my-p1 style을 제거하라
+			// my-p1클래스도 제거
+			$('#p1').on('mouseout',function(){
+				$(this).removeClass('my-p1')
+			})
+
+			// 클래스에 event를 거는 방법
+			// $('tag') : 문서 전체의 tag 모두에게
+			// $('#id') : 문서 내의 id로 지정된 곳만
+			// $('.class') : 문서 내의 class 들로 지정된 곳만
+
+			// 1. my-01 class 가 지정된 곳을 클릭 하면
+			$('.my-01').on('click',function(){
+
+				// 2. 클릭된 tag의 id를 추출해서 id 변수에 할당 하고
+				let id = $(this).attr('id')
+
+				// 3. 클릭된 tag의 id가 p3이면 
+				if(id == 'p3'){
+
+					// 4.클래스를 추가하라
+					$(this).addClass('my-p1')
+
+					// 문자열을 바꾸어라
+					$(this).html("나는 p3 입니다.")
+				}
+			})
+
+			$('#p7').on('click',function(){
+				
+				// .html() : tag에 반응하는 결과
+				$('#p8').html("<h3>대한민국</h3>")
+				
+				// .text() : tag를 그냥 문자열로 표시
+				$('#p9').text("<h3>대한민국</h3>")
+			})
+
+		})
+	</script>
+</head>
+<body>
+	<p id = 'p1' class='my-01'>p1 : 우리나라 대한민국 만세</p>
+	<p id = 'p2' class='my-01'>p2 : 우리나라 대한민국 만세</p>
+	<p id = 'p3' class='my-01'>p3 : 우리나라 대한민국 만세</p>
+	<p id = 'p4' class='my-01'>p4 : 우리나라 대한민국 만세</p>
+	<p id = 'p5' class='my-01'>p5 : 우리나라 대한민국 만세</p>
+	<p id = 'p6' class='my-01'>p6 : 우리나라 대한민국 만세</p>
+	
+	<p id = 'p7' class='my-02'>우리나라 대한민국 만세</p>
+	<p id = 'p8' class='my-02'>우리나라 대한민국 만세</p>
+	<p id = 'p9' class='my-02'>우리나라 대한민국 만세</p>
+
+</body>
+</html>

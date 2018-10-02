@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<style>
+		p1{
+			background-color: yellow;
+			font-weight: bold;
+
+		}
+	</style>
+
+	<script>
+
+		// jquery 시작
+		$(function(){
+
+			$("#p1").click(function(){
+				// document.getElementById('p1').style.color = "blue"
+				// attr : 속성
+				//$(this).attr('color','blue')
+				$(this).css('color','blue')
+			})
+
+
+			$("#p2").on("click",function(){
+				// css : 스타일 속성 지정
+				$(this).css('background-color','yellow')
+				$(this).css('font-weight','bold')
+			})
+
+			//$(this)를 사용하려면 반드시 함수를 function 키워드로 선언하라 
+			// ()=> 를 사용하면 $(this)가 작동 안된다.
+			$('#p3').on('click',function(){
+				$(this).css('background-color','blue')
+			})
+
+			$('p').on('click',function(){
+				alert($(this).html())
+			})
+
+		})		
+
+		// JS 2015 버전을 최신 브라우저에서만 작동되는 화살표함수
+		$(()=>{
+
+		})
+
+	</script>
+</head>
+<body>
+	<p id = "p1">우리나라만세</p>
+	<p id = "p2">안녕하세요</p>
+	<p id = "p3">대한민국</p>
+
+</body>
+</html>

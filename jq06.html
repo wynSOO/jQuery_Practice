@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+
+			$('h2').on('click',function(){
+				/* 
+				$(this) 는 
+				h2 tag 요소 중에서 마우스로 클릭된 요소만을 가리키는 특별한 select 이다.
+				$(this) 가 있기 때문에 어떤 요소가 선택 되었는가를 찾아야 하는
+				번거로운 코드가 필요 없어진다.
+				*/
+				let text = $(this).text()
+				alert(text)
+				/*
+					문서내에 h2 tag 들이 다수 존재 할때
+					특정한 h2 tag가 클릭되었을 때만 어떤 기능을 수행하고 싶으면
+					id 요소를 참조해서 코딩을 한다
+				*/
+				// 현재 클릭된 요소의 id를 추출해서 id 변수에 할당
+				let id = $(this).attr('id')
+				if(id == 'h_3'){
+					$('.hc-1').css('background-color','yellow')
+					$(this).css('color','blue').css('font-weight','bold')
+				}
+			})// $('h2').on() END
+			
+			var h4color
+			var h4backgroundColor
+
+			// chainning 방법을 사용해서 2개의 event 핸들러를 연동
+			$('#h_4').on('mouseover',function(){
+				h4color = $(this).css('color')
+
+				// chainning 방법을 사용ㅎ서 2개의 css 설정을 연동
+				h4backgroundColor = $(this).css('background-color')
+				$(this).css('background-color','yellow')
+				.css('color','blue')
+			}).on('mouseout',function(){
+				$(this).css('color',h4color)
+				$(this).css('background-color',h4backgroundColor)
+			})
+
+
+			// h_2 id 가 있는 tag 에 3가지 이벤트를 동시에 적용
+			$('#h_2').on({
+				// mouseover 와 같다 
+				mouseenter : function() {
+					$(this).css('background-color','cyan')
+				},
+				// mouseout 과 같다.
+				mouseleave : function(){
+					$(this).css('background-color','green')
+				},
+
+				click : function(){
+					$(this).css('background-color','yellow')
+				}
+			})
+			/*
+				JS 코드에서는 브라우저 마다 마우스 이벤트가 약간씩 다르다.
+				mouseenter : ie 에서 사용하는 mouseover 이다.
+				mouseleave : ie 에서 사용하는 mouseout 이다.
+
+				다만 JQ에서는 브라우저에 무관하도록 내부적으로 코드가 작성되어 있어서
+				아무 이벤트나 사용해도 관계 없다.
+
+				mouseenter 와 mouseover 의 근본적인 차이점
+				mouseenter 는 tag에 마우스가 진입되는 순간 1번만 event가 실행
+				mouseover 는 tag내에서 마우스가 움직이는 동안 계속 event가 실행된다.
+			*/
+		})
+
+	</script>
+</head>
+<body>
+	<h2 id='h_2' class="hc-1"> 오늘도 비가 옵니다. </h2>
+	<h2 id="h_3"> 올가을은 많은 비로 시작합니다. </h2>
+	<h2 id="h_4" class="hc-1 hd-1"> 여러분도 건강 조심하세요 </h2>
+</body>
+</html>

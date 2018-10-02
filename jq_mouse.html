@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style >
+		.mouse{
+			width : 40%;
+			height: 120px;
+			float: left;
+			margin: 20px;
+			background-color: yellow;
+		}
+		p{
+			background-color: cyan;
+		}
+
+	</style>
+
+	<script>
+	$(function(){
+
+		var p1Count = 0
+		var p2Count = 0
+		$('.mouseEnter').on('mouseenter',function(){
+			p1Count++
+			$('#p1').text('Enter : ' + p1Count)
+		})
+
+		$('.mouseOver').on('mouseover',function(){
+			p2Count++
+			$('#p2').text('Over : '+ p2Count)
+		})
+
+	})		
+
+	</script>
+</head>
+<body>
+
+	<div class="mouse mouseEnter"><p id="p1">mouseEnter</p></div>
+	<div class="mouse mouseOver"><p id="p2">mouseOver</p></div>
+
+</body>
+</html>

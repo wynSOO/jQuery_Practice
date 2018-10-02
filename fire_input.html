@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDI_6lIP5Ic4ivvu8zE2tbSgOKgpDvugns",
+	    authDomain: "mydb-efcc2.firebaseapp.com",
+	    databaseURL: "https://mydb-efcc2.firebaseio.com",
+	    projectId: "mydb-efcc2",
+	    storageBucket: "mydb-efcc2.appspot.com",
+	    messagingSenderId: "275518148927"
+	  };
+	  firebase.initializeApp(config);
+	  var newPostKey = firebase.database().ref().child('mydoc').push().key
+	  var newPostData = {
+		  postNo : newPostKey,
+		  postAuth : '홍길동',
+		  postTitle : 'firebase 데이터 추가',
+		  postText : '안녕하세요 반갑습니다.',
+		  postDate : Date.now()
+	  }
+	  var updateData = {};
+	  updateData['/mydoc/' + newPostKey] = newPostData;
+	  
+	  firebase.database().ref().update(updateData)
+	</script>
+	
+  </head>
+  <body>
+	
+	<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
+  </body>
+</html>

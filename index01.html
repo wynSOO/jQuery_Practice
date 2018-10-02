@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		// 변수를 선언할 때
+		// JS에서는 별도로 키워드를 사용하지 않아도 된다.
+		// 키워드를 사용하는 이유는
+		// 명시적으로 변수 선언부분이다 라는 것을 알리기 위함
+
+		// 변수 선언 키워드
+		// var : 전역변수로 사용될때
+		// let : 함수내부에서만 사용하고 외부로 노출하지 않고 싶을 때 사용하는 키워드
+		var num1 = 30
+		let num2 = 50
+
+		function myfunc() {
+			document.getElementById('p1').innerHTML = num1
+		}
+
+		function myfunc1() {
+
+			// 배열
+			let persion = ['홍길동','이몽룡','성춘향']
+
+			let persion1 = new Array()
+			let persion2 = []
+
+			document.getElementById('p1').innerHTML = persion[0]
+
+			// 이미 생성된 배열에 새로운 값을 추가할 수 있다.
+			persion1.push('임꺽정')
+			persion1.push('장보고')
+
+			let l = persion1.length // 배열의 개수
+			persion.sort() // 배열을 정렬
+
+			let num = [1,2,3,4,5,6,7,8,9,10]
+			let sum = 0
+			for(i = 0; i < num.length; i++){
+				sum += num[i]
+			}
+
+			// num 배열 리스트를 순회하면서
+			// addAll 함수를 호출하라
+			// addAll은 callback 함수라고 한다.
+			num.forEach(addAll)
+
+
+			// 익명함수를 만들어서 사용하는 방법
+			sum = 0
+			num.forEach(function(n,index,array){
+				sum += n
+			})
+
+			// 원래있던 num 배열을 가공을 해서 (곱하기 2를 하고)
+			// num배열개수만큼의 새로운 배열을 만들어 준다.
+			var numMap = num.map(function(n,index,array){
+				return n*2
+			})
+
+			// 배열 요소 중에 특별한 조건을 만족하는 요소들만 추출하고 싶을 때
+			let numFilter = num.filter(function(n,index,array){
+				return n % 2 ==0
+			})
+
+			// 숫자 배열이 때 각 요소의 합을 계산하는 함수
+			let numReduce = num.reduce(function(total,n,index,array){
+				return total + n
+			})
+
+			document.getElementById('p1').innerHTML = num
+			document.getElementById('p2').innerHTML = numMap
+			document.getElementById('p3').innerHTML = numFilter
+			document.getElementById('p4').innerHTML = numReduce
+
+		}
+
+		var sum1 = 0
+		function addAll(num,index,array){
+			sum1 += num
+		}
+
+	</script>
+</head>
+<body>
+	<p id="p1"/>
+	<p id="p2"/>
+	<p id="p3"/>
+	<p id="p4"/>
+	<div id="div1"></div>
+	<button onclick="myfunc1()">버튼</button>
+</body>
+</html>

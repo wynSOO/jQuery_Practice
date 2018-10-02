@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		/*
+			JQuery 문법의 큰 틀
+			1. JQ 문법은 모두 $ 시작한다.
+			2. script tag 내에서 $(function(){ 문장들 }) 이라고 시작이 되면
+				'문장들'은 모두 JQ의 영양권에 들어간다.
+				그렇더라도, 일반적인 JS 코드를 못쓰는것은 아니다.
+			
+			3. $(요소).기능() 형식의 기본 문법
+			4. $(요소).on('event',function(){ 이벤트 처리 문장들 }) 형식의 event 핸들링 문법
+			
+			5. 현재 사용하는 JQ는 3.xx 이며, 
+				구버전의 $(document.ready(function(){ })) 형식의 시작구문은 사용하지 않는다.
+
+		*/
+
+		/*
+			$(function(){ })으로 정의된 코드들은 
+			현재의 HTML 문서가 모두 완성된 후 작동이 되도록 설계 되어 있다.
+		*/
+		$(function(){
+			// JQ 영역
+
+			$('h2').on('click',function(){
+				$(this).hide()
+			})
+		})
+		/*
+			$(function(){ }) 밖에 정의 된 JQ 코드는 
+			아직 HTML 문서가 모두 완성되지 않은 상태에서
+			정의 되므로
+			아무런 의미 없는 코드가 된다.
+		*/
+		$('h3').on('click',function(){
+				$(this).hide()
+		})
+
+	</script>
+</head>
+<body>
+	<h2> 여러분 반갑습니다. </h2>
+	<h3> 오늘은 불금이다. </h3>
+	<h4> 행복한 주말 되십시요 </h4>
+</body>
+	<script>
+		/*
+			이곳은 모든HTML 문서가 작성된 다음이므로
+			의미 있는 코드가 된다.
+		*/
+		$('h3').on('click',function(){
+				$(this).hide()
+		})
+		/*
+			JQ나 JS 코드의 경우 HTMl 문서가 완성된 후에
+			어떤 코드 적용을 하려는 경우 반드시 
+			문서의 맨 끝 부분에 코드가 있어야 한다.
+
+			이런 단점을 보완하기 위해서 JQ에는 
+			$(document.ready(function(){ })) 코드를 사용해서 
+			문서가 모두 완성된 후 JQ 영역의 코드가 실행 되도록 하는 것이다.
+			그리고 현재의 JQ에서는 $(function(){ })이라고 시작하면
+			$(document.ready(function(){ })) 과 같은 역할을 한다.
+			
+		*/
+	</script>
+</html>
